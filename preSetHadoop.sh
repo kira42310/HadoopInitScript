@@ -8,6 +8,10 @@ sysctl -w fs.file-max=6544018
 echo '' >> /etc/sysctl.conf
 echo '#### set the system wide file ####' >> /etc/sysctl.conf
 echo 'fs.file-max=6544018' >> /etc/sysctl.conf
+#### Filesystem Type and reserved space ####
+#
+# UUID=gfd3f77-6b11-4ba0-8df9-75feb03476efs /disk1                 ext4   noatime       0 0
+#
 #### Network parameter tuning ####
 sysctl -w net.core.somaxconn=1024
 echo '' >> /etc/sysctl.conf

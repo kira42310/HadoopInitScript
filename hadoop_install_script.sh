@@ -33,7 +33,7 @@ su - hdfs -c "mv ~/hadoop/etc/hadoop/yarn-site.xml ~/hadoop/etc/hadoop/yarn-site
 #### core-site.xml ####
 su - hdfs -c "echo -e '<configuration>\n	<property>\n		<name>fs.default.name</name>\n		<value>hdfs://hmaster:9000</value>\n	</property>\n</configuration>' > ~/hadoop/etc/hadoop/core-site.xml"
 #### hdfs-site.xml ####
-su - hdfs -c "echo -e '<configuration>\n	<property>\n		<name>dfs.replication</name>\n		<value>xxx</value>\n	</property>\n	<property>\n		<name>dfs.name.dir</name>\n		<value>file:///home/hdfs/hadoopdata/hdfs/namenode</value>\n	</property>\n	<property>\n		<name>dfs.data.dir</name>\n		<value>file:///home/hdfs/hadoopdata/hdfs/datanode</value>\n	</property>\n</configuration>' > ~/hadoop/etc/hadoop/hdfs-site.xml"
+su - hdfs -c "echo -e '<configuration>\n	<property>\n		<name>dfs.replication</name>\n		<value>xxx</value>\n	</property>\n	<property>\n		<name>dfs.name.dir</name>\n		<value>file:///home/hdfs/hadoopdata/hdfs/namenode</value>\n	</property>\n	<property>\n		<name>dfs.data.dir</name>\n		<value>file:///home/hdfs/hadoopdata/hdfs/datanode</value>\n	</property>\n    <property>\n		<name>dfs.blocksize</name>\n		<value>128m</value>\n   <\property>\n    <property>\n		<name>dfs.datanode.handler.count</name>\n		<value>xxx</value>\n   <\property>\n    <property>\n		<name>dfs.datanode.max.transfer.threads</name>\n		<value>8192</value>\n   <\property>\n</configuration>\n' > ~/hadoop/etc/hadoop/hdfs-site.xml"
 #### mapred-site.xml ####
 su - hdfs -c "echo -e '<configuration>\n	<property>\n		<name>mapreduce.framework.name</name>\n		<value>yarn</value>\n	</property>\n</configuration>' > ~/hadoop/etc/hadoop/mapred-site.xml"
 #### yarn-site.xml ####
