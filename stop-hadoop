@@ -1,0 +1,8 @@
+#!/bin/bash
+
+~/hadoop/sbin/hadoop-daemon.sh stop namenode
+~/hadoop/sbin/hadoop-daemons.sh stop datanode
+~/hadoop/sbin/yarn-daemon.sh stop resourcemanager
+~/hadoop/sbin/yarn-daemons.sh stop nodemanager
+~/hadoop/sbin/mr-jobhistory-daemon.sh stop historyserver
+~/spark/sbin/stop-all.sh

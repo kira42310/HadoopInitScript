@@ -1,0 +1,8 @@
+#!/bin/bash
+
+~/hadoop/sbin/hadoop-daemon.sh start namenode
+~/hadoop/sbin/hadoop-daemons.sh start datanode
+~/hadoop/sbin/yarn-daemon.sh start resourcemanager
+~/hadoop/sbin/yarn-daemons.sh start nodemanager
+~/hadoop/sbin/mr-jobhistory-daemon.sh start historyserver
+~/spark/sbin/start-all.sh
