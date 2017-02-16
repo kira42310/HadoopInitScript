@@ -1,0 +1,3 @@
+#!/bin/bash
+
+dstat -tTcmsgdn --cpufreq --output $1.csv
