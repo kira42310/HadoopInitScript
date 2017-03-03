@@ -1,0 +1,50 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+	echo "No arguments supplied"
+	exit 1
+fi
+
+if [ -z "$1" ]; then
+	echo "No argument supplied"
+	exit 1
+fi
+
+for i in {1..5..1} ;
+do
+        echo "Start iteration $i"
+	/home/hdfs/dst/ds ns$1$i &
+	sleep 30
+
+	#6G
+	#/home/hdfs/hadoop/bin/hadoop jar /home/hdfs/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.5.jar teragen 64424509 /teragen6g 2> ~/LogHadoop/nsg$1$i
+	#8G
+	#/home/hdfs/hadoop/bin/hadoop jar /home/hdfs/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.5.jar teragen 85899345 /teragen6g 2> ~/LogHadoop/nsg$1$i
+	#16G
+	#/home/hdfs/hadoop/bin/hadoop jar /home/hdfs/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.5.jar teragen 171798691 /teragen6g 2> ~/LogHadoop/nsg$1$i
+	#32G
+	#/home/hdfs/hadoop/bin/hadoop jar /home/hdfs/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.5.jar teragen 343597383 /teragen6g 2> ~/LogHadoop/nsg$1$i
+	#64G
+	#/home/hdfs/hadoop/bin/hadoop jar /home/hdfs/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.5.jar teragen 687194767 /teragen6g 2> ~/LogHadoop/nsg$1$i
+	#96G
+	#/home/hdfs/hadoop/bin/hadoop jar /home/hdfs/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.5.jar teragen 1030792151 /teragen6g 2> ~/LogHadoop/nsg$1$i
+	#128G
+	#/home/hdfs/hadoop/bin/hadoop jar /home/hdfs/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.5.jar teragen 1374389534 /teragen6g 2> ~/LogHadoop/nsg$1$i
+	#160G
+	#/home/hdfs/hadoop/bin/hadoop jar /home/hdfs/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.5.jar teragen 1717986918 /teragen6g 2> ~/LogHadoop/nsg$1$i
+	#192G
+	#/home/hdfs/hadoop/bin/hadoop jar /home/hdfs/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.5.jar teragen 2061584302 /teragen6g 2> ~/LogHadoop/nsg$1$i
+	#256G
+	#/home/hdfs/hadoop/bin/hadoop jar /home/hdfs/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.5.jar teragen 2748779069 /teragen6g 2> ~/LogHadoop/nsg$1$i
+	sleep 1m
+	/home/hdfs/hadoop/bin/hadoop jar /home/hdfs/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.5.jar terasort /teragen6g /terasort6g 2> ~/LogHadoop/nss$1$i
+	sleep 30
+	dstatpid="$(pgrep dstat)"
+	kill $dstatpid
+
+	/home/hdfs/hadoop/bin/hdfs dfs -rm -r /teragen6g
+	/home/hdfs/hadoop/bin/hdfs dfs -rm -r /terasort6g
+
+	sleep 4m
+
+done
